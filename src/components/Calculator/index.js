@@ -1,57 +1,54 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import React, { useState } from "react";
 
-const CheckoutCalculator = () => {
-  const [subtotal, setSubtotal] = useState('');
-  const [discount, setDiscount] = useState('');
-  const [total, setTotal] = useState('');
+const MenuCheckoutCalculator = () => {
+  // State to store the current item quantity
+  const [quantity, setQuantity] = useState(1);
 
+  // State to store the current item price
+  const [price, setPrice] = useState(0);
+
+  // Function to update the quantity when input changes
+  const handleQuantityChange = (e) => {
+    setQuantity(parseInt(e.target.value));
+  };
+
+  // Function to update the price when input changes
+  const handlePriceChange = (e) => {
+    setPrice(parseFloat(e.target.value));
+  };
+
+  // Function to calculate the total price
   const calculateTotal = () => {
-    // Perform calculation based on input
-    const parsedSubtotal = parseFloat(subtotal);
-    const parsedDiscount = parseFloat(discount);
-    const calculatedTotal = parsedSubtotal - parsedDiscount;
-    setTotal(calculatedTotal.toFixed(2)); // round to 2 decimal places
+    return quantity * price;
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Subtotal:</Text>
-      <TextInput
-        style={styles.input}
-        keyboardType="numeric"
-        value={subtotal}
-        onChangeText={setSubtotal}
-      />
-      <Text style={styles.label}>Discount:</Text>
-      <TextInput
-        style={styles.input}
-        keyboardType="numeric"
-        value={discount}
-        onChangeText={setDiscount}
-      />
-      <Button title="Calculate Total" onPress={calculateTotal} />
-      <Text style={styles.label}>Total: ${total}</Text>
-    </View>
+    <div>
+      <h2>Menu Checkout Calculator</h2>
+      <div>
+        <label htmlFor="quantity">Quantity: </label>
+        <input
+          type="number"
+          id="quantity"
+          value={quantity}
+          onChange={handleQuantityChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="price">Price: </label>
+        <input
+          type="number"
+          id="price"
+          step="0.01"
+          value={price}
+          onChange={handlePriceChange}
+        />
+      </div>
+      <div>
+        <h3>Total: {calculateTotal()}</h3>
+      </div>
+    </div>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 4,
-    marginBottom: 16,
-    paddingHorizontal: 8,
-  },
-});
-
-export default CheckoutCalculator;
+export default MenuCheckoutCalculator;

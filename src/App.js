@@ -1,6 +1,6 @@
 import "./App.css"
 import MenuApp from "./components/MenuApp"
-import CheckoutCalculator from "./components/Calculator"
+import MenuCheckoutCalculator from "./components/Calculator"
 import createMenuItem from "./components/CreateMenuItem"
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
     <div className="App">
         <MenuApp data={menuData}></MenuApp>
         <createMenuItem></createMenuItem>
-        <CheckoutCalculator></CheckoutCalculator>
+        <MenuCheckoutCalculator></MenuCheckoutCalculator>
     </div>
   )
 }
