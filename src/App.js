@@ -1,7 +1,7 @@
 import "./App.css"
 import MenuApp from "./components/MenuApp"
 import MenuCheckoutCalculator from "./components/Calculator"
-import createMenuItem from "./components/CreateMenuItem"
+import CreateMenuItem from "./components/CreateMenuItem"
 
 function App() {
   let menuData = [
@@ -65,7 +65,7 @@ function App() {
   return (
     <div className="App">
         <MenuApp data={menuData}></MenuApp>
-        <createMenuItem></createMenuItem>
+        <CreateMenuItem />
         <MenuCheckoutCalculator></MenuCheckoutCalculator>
     </div>
   )
